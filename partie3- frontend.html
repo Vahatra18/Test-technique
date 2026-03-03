@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des tâches</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        input[type="text"] {
+            padding: 8px;
+            width: 300px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Liste des tâches</h1>
+    <input type="text" id="search" placeholder="Recherche par nom de tâche..." />
+
+    <table id="task-table">
+        <thead>
+            <tr>
+                <th>Nom de la tâche</th>
+                <th>Projet</th>
+                <th>Priorité</th>
+                <th>Raison du blocage</th>
+            </tr>
+        </thead>
+        <tbody id="task-list">
+            <!-- Les lignes seront insérées ici par JavaScript -->
+        </tbody>
+    </table>
+
+    <script>
+        // Données : liste des tâches (fournies par l'énoncé)
+        const tasks = [
+            {
+                name: "Configurer le serveur",
+                project: "Implémentation Client A",
+                priority: 1,
+                block_reason: "En attente des accès"
+            },
+            {
+                name: "Rédiger la documentation",
+                project: "Projet interne",
+                priority: 3,
+                block_reason: "Manque d'informations"
+            },
+            {
+                name: "Mettre à jour le schéma de données",
+                project: "Implémentation Client B",
+                priority: 2,
+                block_reason: "Décision métier en attente"
+            }
+        ];
+
+        // Fonction pour afficher les tâches dans le tableau
+        function allTasks(tasksToShow) {
+            const tbody = document.getElementById("task-list");
+            // On vide le tableau avant de le remplir
+            tbody.innerHTML = "";
+
+            // Si la liste est vide, on affiche un message
+            if (tasksToShow.length === 0) {
+                const row = document.createElement("tr");
+                row.innerHTML = `<td colspan="4" style="text-align:center;">Aucune tâche trouvée</td>`;
+                tbody.appendChild(row);
+                return;
+            }
+
+            // On parcourt les tâches et on crée une ligne pour chacune
+            tasksToShow.forEach(task => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${task.name}</td>
+                    <td>${task.project}</td>
+                    <td>${task.priority}</td>
+                    <td>${task.block_reason}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Fonction de filtrage (insensible à la casse)
+        function filterTasks(searchText) {
+            // Si le champ est vide, on retourne toutes les tâches
+            if (!searchText) {
+                return tasks;
+            }
+            // Sinon, on garde celles dont le nom contient le texte saisi
+            return tasks.filter(task =>
+                task.name.toLowerCase().includes(searchText.toLowerCase())
+            );
+        }
+        
+
+        // Gestion du champ de recherche
+        const searchInput = document.getElementById("search");
+        searchInput.addEventListener("input", function(event) {
+            const searchText = event.target.value;
+            const filtered = filterTasks(searchText);
+            allTasks(filtered);
+        });
+
+        // Affichage initial (au chargement de la page)
+        allTasks(tasks);
+    </script>
+</body>
+</html>
