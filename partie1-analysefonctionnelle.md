@@ -131,7 +131,7 @@ Pour structurer les informations, je propose les entités suivantes.
 Représente une commande ou un projet.
 
 | Champ             | Type     | Rôle                   | Règles           |
-| ------------------| -------- | ---------------------- | ---------------- |
+| ----------------- | -------- | ---------------------- | ---------------- |
 | id                | int      | Identifiant unique     | Clé primaire     |
 | nom               | string   | Nom du projet          | Requis, non vide |
 | date_creation     | datetime | Date de création       | Requis           |
@@ -147,7 +147,7 @@ Représente une commande ou un projet.
 Représente une couleur détectée dans l’image.
 
 | Champ                | Type   | Rôle                   | Règles        |
-| ---------------------| ------ | ---------------------- | ------------- |
+| -------------------- | ------ | ---------------------- | ------------- |
 | id                   | int    | Identifiant            | Clé primaire  |
 | projet_id            | int    | Référence au projet    | Clé étrangère |
 | code_col             | string | Code couleur (#RRGGBB) | Format valide |
@@ -161,7 +161,7 @@ Représente une couleur détectée dans l’image.
 
 ## Relations
 
-- Un `ProjetBroderie` possède plusieurs `Couleur` (relation one-to-many).
+- Un `ProjetBroderie` possède plusieurs `Couleur`.
 - Une `Couleur` appartient à un seul projet.
 
 ---
