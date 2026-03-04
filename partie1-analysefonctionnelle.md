@@ -130,15 +130,15 @@ Pour structurer les informations, je propose les entités suivantes.
 
 Représente une commande ou un projet.
 
-| Champ           | Type     | Rôle                   | Règles           |
-| --------------- | -------- | ---------------------- | ---------------- |
-| id              | int      | Identifiant unique     | Clé primaire     |
-| nom             | string   | Nom du projet          | Requis, non vide |
-| dateCreation    | datetime | Date de création       | Requis           |
-| imagePath       | string   | Chemin vers l’image    | Requis           |
-| resolution      | float    | Résolution de l’image  | > 0 si renseigné |
-| largeurReelleCm | float    | Largeur réelle fournie | > 0 si renseigné |
-| densitePoints   | float    | Points par cm²         | > 0              |
+| Champ             | Type     | Rôle                   | Règles           |
+| ------------------| -------- | ---------------------- | ---------------- |
+| id                | int      | Identifiant unique     | Clé primaire     |
+| nom               | string   | Nom du projet          | Requis, non vide |
+| date_creation     | datetime | Date de création       | Requis           |
+| Image_path        | string   | Chemin vers l’image    | Requis           |
+| resolution        | float    | Résolution de l’image  | > 0 si renseigné |
+| largeur_reelle_cm | float    | Largeur réelle fournie | > 0 si renseigné |
+| densite_points    | float    | Points par cm²         | > 0              |
 
 ---
 
@@ -146,16 +146,16 @@ Représente une commande ou un projet.
 
 Représente une couleur détectée dans l’image.
 
-| Champ              | Type   | Rôle                   | Règles        |
-| ------------------ | ------ | ---------------------- | ------------- |
-| id                 | int    | Identifiant            | Clé primaire  |
-| projetId           | int    | Référence au projet    | Clé étrangère |
-| codeCol            | string | Code couleur (#RRGGBB) | Format valide |
-| surfacePixels      | int    | Nombre de pixels       | ≥ 0           |
-| surfaceCm2         | float  | Surface réelle         | ≥ 0           |
-| nombrePoints       | int    | Points estimés         | ≥ 0           |
-| longueurFilMetres  | float  | Fil estimé             | ≥ 0           |
-| tempsEstimeMinutes | float  | Temps estimé           | ≥ 0           |
+| Champ                | Type   | Rôle                   | Règles        |
+| ---------------------| ------ | ---------------------- | ------------- |
+| id                   | int    | Identifiant            | Clé primaire  |
+| projet_id            | int    | Référence au projet    | Clé étrangère |
+| code_col             | string | Code couleur (#RRGGBB) | Format valide |
+| surface_pixels       | int    | Nombre de pixels       | ≥ 0           |
+| surface_cm2          | float  | Surface réelle         | ≥ 0           |
+| nombre_point         | int    | Points estimés         | ≥ 0           |
+| longueur_fil_metres  | float  | Fil estimé             | ≥ 0           |
+| temps_estime_minutes | float  | Temps estimé           | ≥ 0           |
 
 ---
 
